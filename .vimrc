@@ -1,3 +1,4 @@
+set modeline
 set hlsearch
 set ignorecase
 set smartcase
@@ -14,7 +15,7 @@ set shiftwidth=4
 " set cursorline
 set showmatch
 set number
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " dein.vim
 if &compatible 
@@ -29,8 +30,15 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+"https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
+call dein#add('scrooloose/nerdtree')
 call dein#end()
 filetype plugin indent on 
+
+" https://qiita.com/ymiyamae/items/06d0f5ce9c55e7369e1f
+" ファイルタイプに合わせたindent
+autocmd FileType python setlocal sw=4 sts=4 ts=4 et
 
 if dein#check_install()
   call dein#install()
@@ -38,4 +46,5 @@ endif
 
 
 
+autocmd VimEnter * execute 'NERDTree'
 
