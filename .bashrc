@@ -20,7 +20,6 @@ PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-GOPATH=$HOME/go
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
@@ -116,8 +115,64 @@ if ! shopt -oq posix; then
 fi
 
 # added by Miniconda3 4.3.21 installer
-export PATH="/home/shirai/miniconda3/bin:$GOPATH/bin:$PATH"
+export PATH="/home/shirai/miniconda3/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
 
 #do not logout with key carelessly
 set -o ignoreeof
+
+
+#GCLOUD
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ]; then source '/home/chronos/google-cloud-sdk/path.bash.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/google-cloud-sdk/completion.bash.inc'; fi
+
+
+##GO and peco 
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+peco-select-history() {
+    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": peco-select-history'
+
+gcfg(){
+    configuration_name=$(gcloud config configurations list | peco | awk '{print $1}')
+    gcloud config configurations activate "${configuration_name}"
+}
+
+[ -r /home/chronos/.byobu/prompt ] && . /home/chronos/.byobu/prompt   #byobu-prompt#
+set -o ignoreeof
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
