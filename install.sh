@@ -13,7 +13,8 @@ done
 
 if [ ! -d ~/.vim/dein/repos/github.com/Shougo ]
 then
-  mkdir -p ~/.vim/dein/repos/github.com/Shougo/dein.vim
+  mkdir -p ~/.vim/dein/repos/github.com/Shougo
+  cd ~/.vim/dein/repos/github.com/Shougo
   git clone https://github.com/Shougo/dein.vim.git
 fi
 
