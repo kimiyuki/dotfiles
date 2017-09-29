@@ -23,7 +23,6 @@ HISTFILESIZE=2000000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-GOPATH=$HOME/go
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
@@ -118,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # added by Miniconda3 4.3.21 installer
+export GOPATH=$HOME/go
 export PATH="/home/shirai/miniconda3/bin:$GOPATH/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
 set -o ignoreeof
