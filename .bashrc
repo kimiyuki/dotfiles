@@ -116,6 +116,7 @@ fi
 
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/shirai/miniconda3/bin:$PATH"
+export PATH="/home/shirai/anaconda3/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
 
 #do not logout with key carelessly
@@ -124,9 +125,9 @@ set -o ignoreeof
 
 #GCLOUD
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ]; then source '/home/chronos/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
 # The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 
 ##GO and peco 
