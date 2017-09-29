@@ -15,42 +15,6 @@ set shiftwidth=4
 set showmatch
 set number
 
-let python_highlight_all = 1 
-
-" pythoogen load
-filetype off
-execute pathogen#infect()
-execute pathogen#helptags()
-syntax on
-filetype plugin indent on
-syntax on
-let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-
-
-function! Preserve(command)
-  "Save the last search.
-  let search = @/
-  " Save the current cursor position.
-  let cursor_position = getpos('.')
-  " Save the current window position.
-  normal! H
-  let window_position = getpos('.')
-  call setpos('.', cursor_position)
-  " Execute the command.
-  execute a:command
-  " Restore the last search.
-  let @/ = search
-  call setpos(',', window_position)
-  normal! zt
-  " restore the prevvious
-  call setpos(',', cursor_position)
-endfunction
-function! Autopep8()
-    call Preserve(':silent %!autopep8 -')
-endfunction
-autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
-
-
 
 
 
