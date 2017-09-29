@@ -10,14 +10,11 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
+HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000000
 HISTFILESIZE=2000000
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -115,9 +112,12 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+
 fi
 
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/shirai/miniconda3/bin:$GOPATH/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
+
+#do not logout with key carelessly
 set -o ignoreeof
