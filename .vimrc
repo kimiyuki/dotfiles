@@ -31,6 +31,7 @@ call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('jpalardy/vim-slime')
 "https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
 call dein#add('scrooloose/nerdtree')
 call dein#end()
@@ -44,7 +45,8 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-
-autocmd VimEnter * execute 'NERDTree'
-
+"autocmd VimEnter * execute 'NERDTree'
+"https://github.com/jpalardy/vim-slime
+let g:slime_python_ipython = 1
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
