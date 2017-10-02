@@ -133,7 +133,6 @@ if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/googl
 ##GO and peco 
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 peco-select-history() {
@@ -150,30 +149,4 @@ gcfg(){
 
 [ -r /home/chronos/.byobu/prompt ] && . /home/chronos/.byobu/prompt   #byobu-prompt#
 set -o ignoreeof
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
