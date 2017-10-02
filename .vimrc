@@ -35,6 +35,7 @@ call dein#add('jpalardy/vim-slime')
 call dein#add('tell-k/vim-autopep8')
 "https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
 call dein#add('scrooloose/nerdtree')
+call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
 
