@@ -12,9 +12,9 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
-HISTSIZE=1000000
-HISTFILESIZE=2000000
-PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export HISTSIZE=1000000
+export HISTFILESIZE=2000000
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -85,9 +85,10 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -altrhF'
 alias la='ls -A'
 alias l='ls -CF'
+alias rm='rm -i'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
