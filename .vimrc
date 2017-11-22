@@ -2,7 +2,6 @@ set modeline
 set hlsearch
 set ignorecase
 set smartcase
-set ts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.yml setlocal ft=yaml
 autocmd BufNewFile,BufRead *.yaml setlocal ft=yaml
 set encoding=utf-8
@@ -11,8 +10,9 @@ set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,
 " https://www.fullstackpython.com/vim.html
 syntax enable
 set autoindent
-set expandtab
+set tabstop=4
 set shiftwidth=4
+set expandtab
 " set cursorline
 set showmatch
 set number
@@ -34,11 +34,11 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('jpalardy/vim-slime')
 call dein#add('tell-k/vim-autopep8')
-call dein#add('davidhalter/jedi-vim')
 call dein#add('Yggdroot/indentLine')
+call dein#add('elzr/vim-json')
 "https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
 call dein#add('scrooloose/nerdtree')
-call dein#add('davidhalter/jedi-vim')
+"call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
 
@@ -59,3 +59,11 @@ let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane"
 "http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>h :noh<CR>
+
+function! PecoOpen()
+    for filename in split(system("find . -type f | peco"), "\n")
+        execute "e" filename
+    endfor
+endfunction
+nnoremap <Leader>op :call PecoOpen()<CR>
