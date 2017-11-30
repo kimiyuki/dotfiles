@@ -76,3 +76,7 @@ function! PecoOpen()
     endfor
 endfunction
 nnoremap <Leader>op :call PecoOpen()<CR>
+
+"https://hori-ryota.com/blog/neovim-fix-input-broken-ttimeout/
+set ttimeout
+set ttimeoutlen=50

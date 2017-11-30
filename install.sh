@@ -5,6 +5,10 @@ do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
     [[ "$f" == *".swp"* ]] && continue
+    if [ "$f" == "init.vim" ]; then
+        echo 'init.vim to ~/.config/nvim/'
+        ln -s ~/dotfiles/"$f"  ~/.config/nvim/"$f"
+    fi
     if [ ! -f ~/"$f" ]; then
       echo link "$f"
       ln -s ~/dotfiles/"$f" ~/"$f"
