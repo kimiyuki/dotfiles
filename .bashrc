@@ -132,9 +132,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/googl
 
 
 ##GO and peco 
-#export GOPATH=$HOME/go
-#export GOROOT=/usr/local/go
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOPATH="$HOME/go"
+export PATH="$GOPATH:$GOPATH/bin:$PATH"
 
 peco-select-history() {
     declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
