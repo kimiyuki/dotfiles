@@ -119,6 +119,7 @@ fi
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/shirai/miniconda3/bin:$PATH"
 export PATH="/home/shirai/anaconda3/bin:$PATH"
+export PATH="/home/shirai/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
 
 #do not logout with key carelessly

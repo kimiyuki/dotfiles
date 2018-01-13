@@ -45,6 +45,7 @@ call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('elzr/vim-json')
+call dein#add('szw/vim-tags')
 "https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
 call dein#add('scrooloose/nerdtree')
 "call dein#add('davidhalter/jedi-vim')
@@ -69,6 +70,10 @@ let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane"
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>h :noh<CR>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> ]B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 function! PecoOpen()
     for filename in split(system("find . -type f | peco"), "\n")
