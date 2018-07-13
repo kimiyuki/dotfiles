@@ -86,10 +86,12 @@ fi
 
 # some more ls aliases
 alias ll='ls -altrhF'
+alias lh='ls -d .*'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
 alias locate='locate -b'
+alias dirs='dirs -v'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -149,7 +151,6 @@ gcfg(){
     gcloud config configurations activate "${configuration_name}"
 }
 
-[ -r /home/chronos/.byobu/prompt ] && . /home/chronos/.byobu/prompt   #byobu-prompt#
 set -o ignoreeof
 
 eval "$(register-python-argcomplete conda)"
@@ -157,3 +158,5 @@ eval "$(register-python-argcomplete conda)"
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export LESS='-i -M -R'
+ [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+. /usr/share/autojump/autojump.sh
