@@ -83,7 +83,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -altrhF'
-alias lh='ls -d .*'
+alias lh='tree -d -L 1'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
