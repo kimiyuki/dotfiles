@@ -76,9 +76,9 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep='grep -i --color=auto'
+    alias fgrep='fgrep -i --color=auto'
+    alias egrep='egrep -i --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -86,7 +86,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -altrhF'
-alias lh='ls -d .*'
+alias lh='tree -d -L 1'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
@@ -161,3 +161,4 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY
 export LESS='-i -M -R'
  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 . /usr/share/autojump/autojump.sh
+LANGUAGE=en
