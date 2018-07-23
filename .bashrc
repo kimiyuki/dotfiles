@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -10,11 +6,12 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoredups:erasedups
+HISTCONTROL=ignoreboth
 shopt -s histappend
 export HISTSIZE=1000000
 export HISTFILESIZE=2000000
-export PROMPT_COMMAND="history -a; history -c; history -r; history -n; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a"
+#export PROMPT_COMMAND="history -a; history -c; history -r; history -n; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -76,9 +73,9 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep='grep -i --color=auto'
+    alias fgrep='fgrep -i --color=auto'
+    alias egrep='egrep -i --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -128,10 +125,7 @@ export PATH=$PATH:$HOME/google_appengine/
 set -o ignoreeof
 
 
-#GCLOUD
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
-# The next line enables shell command completion for gcloud.
+#GCLOUD# The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 
@@ -154,10 +148,20 @@ gcfg(){
 
 set -o ignoreeof
 
-eval "$(register-python-argcomplete conda)"
+#eval "$(register-python-argcomplete conda)"
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export LESS='-i -M -R'
- [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-. /usr/share/autojump/autojump.sh
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+#. /usr/share/autojump/autojump.sh
+
+# If not running interactively, return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+if [ -f "/google/devshell/bashrc.google" ]; then
+  source "/google/devshell/bashrc.google"
+fi
+
