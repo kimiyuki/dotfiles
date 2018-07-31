@@ -11,7 +11,7 @@ shopt -s histappend
 export HISTSIZE=1000000
 export HISTFILESIZE=2000000
 #export PROMPT_COMMAND="history -a"
-export PROMPT_COMMAND="history -a; history -c; history -r; history -n; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -164,4 +164,3 @@ esac
 if [ -f "/google/devshell/bashrc.google" ]; then
   source "/google/devshell/bashrc.google"
 fi
-export PROMPT_COMMAND='hpwd=$(history 1); hpwd="${hpwd# *[0-9]*  }"; if [[ ${hpwd%% *} == "cd" ]]; then cwd=$OLDPWD; else cwd=$PWD; fi; hpwd="${hpwd% ### *} ### $cwd"; history -s "$hpwd"'
