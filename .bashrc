@@ -11,11 +11,11 @@ shopt -s histappend
 export HISTSIZE=1000000
 export HISTFILESIZE=2000000
 #export PROMPT_COMMAND="history -a"
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+#shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -116,10 +116,9 @@ if ! shopt -oq posix; then
 fi
 
 # added by Miniconda3 4.3.21 installer
-export PATH="/home/shirai/miniconda3/bin:$PATH"
-export PATH="/home/shirai/anaconda3/bin:$PATH"
-export PATH="/home/shirai/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:$HOME/google-cloud-sdk/bin
+export PATH=$PATH:$HOME/.local/bin
 
 #do not logout with key carelessly
 set -o ignoreeof

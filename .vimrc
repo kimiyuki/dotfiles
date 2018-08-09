@@ -3,6 +3,7 @@ source $VIMRUNTIME/defaults.vim
 
 set scrolloff=0
 set laststatus=2
+set ambiwidth=double
 "set cmdheight=2
 set modeline
 set hlsearch
@@ -18,11 +19,14 @@ set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,
 syntax enable
 set autoindent
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
+set incsearch
+set smartindent
 set expandtab
 " set cursorline
 set showmatch
 set number
+set ruler
 set clipboard=unnamedplus
 
 " dein.vim
@@ -54,6 +58,8 @@ call dein#add('elzr/vim-json')
 call dein#add('szw/vim-tags')
 "https://qiita.com/ymiyamae/items/561cb4a5b247deb2ebc1#_reference-027c1cb5240da8a23bc7
 call dein#add('scrooloose/nerdtree')
+call dein#add('posva/vim-vue')
+call dein#add('leafgarland/typescript-vim')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
@@ -87,3 +93,8 @@ function! PecoOpen()
     endfor
 endfunction
 nnoremap <Leader>op :call PecoOpen()<CR>
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+autocmd FileType vue syntax sync fromstart
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <leader>r :NERDTreeFind<cr>
+autocmd BufEnter * lcd %:p:h
