@@ -97,4 +97,5 @@ autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd FileType vue syntax sync fromstart
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>n :tabn<cr>
 autocmd BufEnter * lcd %:p:h
