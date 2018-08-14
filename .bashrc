@@ -23,6 +23,11 @@ export HISTFILESIZE=2000000
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+export LESS='-i -M -R'
+#https://superuser.com/questions/117841/get-colors-in-less-or-more
+#export LESS='-R'
+#export LESSOPEN='|~/lessfilter'
+
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -115,8 +120,8 @@ if ! shopt -oq posix; then
 
 fi
 
-# added by Miniconda3 4.3.21 installer
 export PATH="$HOME/bin:$PATH"
+export PATH="/home/shirai/bin:$PATH"
 export PATH=$PATH:$HOME/google-cloud-sdk/bin
 export PATH=$PATH:$HOME/.local/bin
 
@@ -147,11 +152,8 @@ gcfg(){
 
 set -o ignoreeof
 
-#eval "$(register-python-argcomplete conda)"
-
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export LESS='-i -M -R'
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 #. /usr/share/autojump/autojump.sh
 
@@ -163,3 +165,4 @@ esac
 if [ -f "/google/devshell/bashrc.google" ]; then
   source "/google/devshell/bashrc.google"
 fi
+
