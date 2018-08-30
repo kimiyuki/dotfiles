@@ -3,6 +3,7 @@ source $VIMRUNTIME/defaults.vim
 
 set scrolloff=0
 set laststatus=2
+set statusline=%!getcwd()
 set ambiwidth=double
 "set cmdheight=2
 set modeline
