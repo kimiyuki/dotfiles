@@ -117,10 +117,9 @@ if ! shopt -oq posix; then
 fi
 
 # added by Miniconda3 4.3.21 installer
-export PATH="/home/shirai/miniconda3/bin:$PATH"
-export PATH="/home/shirai/anaconda3/bin:$PATH"
 export PATH="/home/shirai/bin:$PATH"
 export PATH=$PATH:$HOME/google_appengine/
+export PATH="/usr/local/python370/bin:$PATH"
 
 #do not logout with key carelessly
 set -o ignoreeof
@@ -157,3 +156,9 @@ eval "$(register-python-argcomplete conda)"
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export LESS='-i -M -R'
+
+
+if [ `hostname` == 'wordpress' ]; then
+    export PYTHONPATH="/usr/local/python370/bin"
+fi
+
