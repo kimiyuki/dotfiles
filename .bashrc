@@ -165,6 +165,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY
 export LESS='-i -M -R'
 if [ `hostname` == 'wordpress' ]; then
     export PYTHONPATH="/usr/local/python370/bin"
+fi
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 #. /usr/share/autojump/autojump.sh
 
