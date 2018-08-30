@@ -75,9 +75,6 @@ endif
 
 "autocmd VimEnter * execute 'NERDTree'
 "https://github.com/jpalardy/vim-slime
-let g:slime_python_ipython = 1
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
 
 "http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"

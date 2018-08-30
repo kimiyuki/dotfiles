@@ -125,10 +125,12 @@ if ! shopt -oq posix; then
 
 fi
 
+# added by Miniconda3 4.3.21 installer
 export PATH="$HOME/bin:$PATH"
-export PATH="/home/shirai/bin:$PATH"
-export PATH=$PATH:$HOME/google-cloud-sdk/bin
-export PATH=$PATH:$HOME/.local/bin
+export PATH="$PATH:$HOME/google_appengine/"
+export PATH="$PATH:/usr/local/python370/bin"
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 #do not logout with key carelessly
 set -o ignoreeof
@@ -159,6 +161,10 @@ set -o ignoreeof
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+export LESS='-i -M -R'
+if [ `hostname` == 'wordpress' ]; then
+    export PYTHONPATH="/usr/local/python370/bin"
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 #. /usr/share/autojump/autojump.sh
 
