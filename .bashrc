@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -10,15 +6,21 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoredups:erasedups
+HISTCONTROL=ignoreboth
+function share_history {
+  history -a
+  history -c
+  history -r
+}
+PROMPT_COMMAND='share_history'
 shopt -s histappend
 export HISTSIZE=1000000
 export HISTFILESIZE=2000000
-export PROMPT_COMMAND="history -a; history -c; history -r; history -n; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+#shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -26,6 +28,11 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+export LESS='-i -M -R'
+#https://superuser.com/questions/117841/get-colors-in-less-or-more
+#export LESS='-R'
+#export LESSOPEN='|~/lessfilter'
+
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -76,9 +83,9 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep='grep -i --color=auto'
+    alias fgrep='fgrep -i --color=auto'
+    alias egrep='egrep -i --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -86,10 +93,12 @@ fi
 
 # some more ls aliases
 alias ll='ls -altrhF'
+alias lh='tree -d -L 1'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
 alias locate='locate -b'
+alias dirs='dirs -v'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -117,24 +126,24 @@ if ! shopt -oq posix; then
 fi
 
 # added by Miniconda3 4.3.21 installer
-export PATH="/home/shirai/bin:$PATH"
-export PATH=$PATH:$HOME/google_appengine/
-export PATH="/usr/local/python370/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/google_appengine/"
+export PATH="$PATH:/usr/local/python370/bin"
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 #do not logout with key carelessly
 set -o ignoreeof
 
 
-#GCLOUD
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
-# The next line enables shell command completion for gcloud.
+#GCLOUD# The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 
 ##GO and peco 
+#https://teratail.com/questions/41746
 export GOPATH="$HOME/go"
-export PATH="$GOPATH:$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 peco-select-history() {
     declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
@@ -148,17 +157,23 @@ gcfg(){
     gcloud config configurations activate "${configuration_name}"
 }
 
-[ -r /home/chronos/.byobu/prompt ] && . /home/chronos/.byobu/prompt   #byobu-prompt#
 set -o ignoreeof
-
-eval "$(register-python-argcomplete conda)"
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 export LESS='-i -M -R'
-
-
 if [ `hostname` == 'wordpress' ]; then
     export PYTHONPATH="/usr/local/python370/bin"
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+#. /usr/share/autojump/autojump.sh
+
+# If not running interactively, return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+if [ -f "/google/devshell/bashrc.google" ]; then
+  source "/google/devshell/bashrc.google"
 fi
 
