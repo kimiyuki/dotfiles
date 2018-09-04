@@ -178,3 +178,9 @@ if [ -f "/google/devshell/bashrc.google" ]; then
   source "/google/devshell/bashrc.google"
 fi
 
+#http://forco.hateblo.jp/entry/2015/04/05/035621
+JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME/bin
+export PATH
+

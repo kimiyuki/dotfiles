@@ -51,6 +51,7 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('jpalardy/vim-slime')
 call dein#add('tell-k/vim-autopep8')
 call dein#add('plasticboy/vim-markdown')
+call dein#add('previm/previm')
 "https://github.com/kannokanno/previm/blob/master/doc/previm.jax#L149-L159
 call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
