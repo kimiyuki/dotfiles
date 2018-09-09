@@ -102,7 +102,6 @@ alias dirs='dirs -v'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -183,4 +182,27 @@ JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 export JAVA_HOME
 PATH=$PATH:$JAVA_HOME/bin
 export PATH
+
+if [ $LOGNAME == 'chronos' ]; then
+  sudo sysctl kernel.hostname=c302
+  export PAGER=/usr/local/bin/less
+  # XDG Base Directory Specification Environment Variables
+  # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html.
+  export XDG_DATA_HOME=$HOME/.local/share
+  export XDG_CONFIG_HOME=$HOME/.config
+  export XDG_DATA_DIRS=/usr/local/share
+  export XDG_CONFIG_DIRS=/usr/local/etc/xdg
+  export XDG_CACHE_HOME=$HOME/.cache
+  # nodebrew completion
+  if [ -f /usr/local/share/nodebrew/completions/bash/nodebrew-completion ]; then
+    source /usr/local/share/nodebrew/completions/bash/nodebrew-completion
+  fi
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+  sudo mount -i -o remount,exec /home/chronos/user/
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/home/chronos/user/src/google-cloud-sdk/path.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/path.bash.inc'; fi
+
+  # The next line enables shell command completion for gcloud.
+  if [ -f '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc'; fi
+fi
 
