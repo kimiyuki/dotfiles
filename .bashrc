@@ -184,7 +184,6 @@ PATH=$PATH:$JAVA_HOME/bin
 export PATH
 
 if [ $LOGNAME == 'chronos' ]; then
-  sudo sysctl kernel.hostname=c302
   export PAGER=/usr/local/bin/less
   # XDG Base Directory Specification Environment Variables
   # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html.
@@ -198,7 +197,6 @@ if [ $LOGNAME == 'chronos' ]; then
     source /usr/local/share/nodebrew/completions/bash/nodebrew-completion
   fi
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  sudo mount -i -o remount,exec /home/chronos/user/
   # The next line updates PATH for the Google Cloud SDK.
   if [ -f '/home/chronos/user/src/google-cloud-sdk/path.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/path.bash.inc'; fi
 
