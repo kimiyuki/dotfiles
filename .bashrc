@@ -61,16 +61,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w(\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[\033[00m\]\$ "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -127,6 +127,7 @@ fi
 # added by Miniconda3 4.3.21 installer
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$HOME/google_appengine/"
+export PATH="$PATH:$HOME/src/go_appengine/"
 export PATH="$PATH:/usr/local/python370/bin"
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -204,3 +205,4 @@ if [ $LOGNAME == 'chronos' ]; then
   if [ -f '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc'; fi
 fi
 
+eval "$(direnv hook bash)"
