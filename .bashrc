@@ -7,12 +7,14 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-function share_history {
+function post_command {
   history -a
   history -c
   history -r
+  last_command=`history 1| cut -c 8-|sed -e "s/^/'/;s/$/'/"`
+  #$HOME/bin/bq-insert-cmd.sh $PWD "$last_command" 1>/dev/null &
 }
-PROMPT_COMMAND='share_history'
+PROMPT_COMMAND='post_command'
 shopt -s histappend
 export HISTSIZE=1000000
 export HISTFILESIZE=2000000
@@ -92,7 +94,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -altrhF'
+alias ll='ls -alrthF'
 alias lh='tree -d -L 1'
 alias la='ls -A'
 alias l='ls -CF'
@@ -206,3 +208,6 @@ if [ $LOGNAME == 'chronos' ]; then
 fi
 
 eval "$(direnv hook bash)"
+
+# added by Anaconda3 installer
+#export PATH="/home/shirai/anaconda3/bin:$PATH"
