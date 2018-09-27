@@ -1,5 +1,5 @@
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+"unlet! skip_defaults_vim
+"source $VIMRUNTIME/defaults.vim
 
 set scrolloff=0
 set laststatus=2
@@ -8,6 +8,8 @@ set ambiwidth=double
 "set cmdheight=2
 set modeline
 set hlsearch
+hi Search ctermbg=LightCyan
+"hi Search ctermfg=Red
 set ignorecase
 set smartcase
 autocmd BufNewFile,BufRead *.yml setlocal ft=yaml
@@ -62,6 +64,8 @@ call dein#add('szw/vim-tags')
 call dein#add('scrooloose/nerdtree')
 call dein#add('posva/vim-vue')
 call dein#add('leafgarland/typescript-vim')
+call dein#add('mechatroner/rainbow_csv')
+call dein#add('chrisbra/Colorizer')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
