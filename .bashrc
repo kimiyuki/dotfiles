@@ -130,7 +130,6 @@ fi
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$HOME/google_appengine/"
 export PATH="$PATH:$HOME/src/go_appengine/"
-export PATH="$PATH:/usr/local/python370/bin"
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -210,4 +209,4 @@ fi
 eval "$(direnv hook bash)"
 
 # added by Anaconda3 installer
-#export PATH="/home/shirai/anaconda3/bin:$PATH"
+#export PATH="$PATH:/home/shirai/anaconda3/bin"
