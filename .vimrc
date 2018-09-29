@@ -3,7 +3,8 @@
 
 set scrolloff=0
 set laststatus=2
-set statusline=%!getcwd()
+"set statusline=%!getcwd()
+set statusline=%{fugitive#statusline()}:%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set ambiwidth=double
 "set cmdheight=2
 set modeline
@@ -66,6 +67,7 @@ call dein#add('posva/vim-vue')
 call dein#add('leafgarland/typescript-vim')
 call dein#add('mechatroner/rainbow_csv')
 call dein#add('chrisbra/Colorizer')
+call dein#add('tpope/vim-fugitive')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
