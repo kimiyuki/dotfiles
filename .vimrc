@@ -9,6 +9,8 @@ set ambiwidth=double
 "set cmdheight=2
 set modeline
 set hlsearch
+set belloff=all
+set tags=./tags;/
 hi Search ctermbg=LightCyan
 "hi Search ctermfg=Red
 set ignorecase
