@@ -33,6 +33,7 @@ export HISTFILESIZE=2000000
 export LESS='-i -M -R'
 #https://superuser.com/questions/117841/get-colors-in-less-or-more
 #export LESS='-R'
+#export EDITOR=emacs
 #export LESSOPEN='|~/lessfilter'
 
 
