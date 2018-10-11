@@ -1,6 +1,7 @@
 "unlet! skip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 
+:color desert
 set scrolloff=0
 set laststatus=2
 "set statusline=%!getcwd()
