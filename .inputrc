@@ -1,1 +1,2 @@
+#it affects tools using readline library
 set show-all-if-ambiguous on
