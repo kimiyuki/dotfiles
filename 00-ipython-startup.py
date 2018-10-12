@@ -7,6 +7,10 @@ import numpy as np
 import pandas as pd
 from pandas_datareader import data
 pd.set_option("display.max_rows", 6)
+def show_more(df, n=100):
+    with pd.option_context("display.max_rows", n):
+        display(df)
+
 import seaborn as sns
 iris = sns.load_dataset("iris")
 mpg = sns.load_dataset("mpg")
