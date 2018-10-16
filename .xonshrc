@@ -1,0 +1,11 @@
+# XONSH WIZARD START
+$AUTO_CD = '1'
+$AUTO_PUSHD = '1'
+$AUTO_SUGGEST_IN_COMPLETIONS = '1'
+$CASE_SENSITIVE_COMPLETIONS = ''
+$IGNOREEOF = '1'
+$LANG = "'ja_JP.utf8'"
+$MOUSE_SUPPORT = '1'
+source-bash "echo loading xonsh foreign shell"
+xontrib load apt_tabcomplete autojump autoxsh docker_tabcomplete jedi mpl prompt_ret_code scrapy_tabcomplete vox vox_tabcomplete avox z powerline click_tabcomplete
+# XONSH WIZARD END
