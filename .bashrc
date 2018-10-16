@@ -210,4 +210,6 @@ fi
 eval "$(direnv hook bash)"
 
 # added by Anaconda3 installer
-#export PATH="$PATH:/home/shirai/anaconda3/bin"
+#export PATH="/home/shirai/anaconda3/bin:$PATH"
+#unset module
+#unset scl
