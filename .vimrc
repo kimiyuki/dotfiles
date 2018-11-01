@@ -16,12 +16,12 @@ hi Search ctermbg=LightCyan
 "hi Search ctermfg=Red
 set ignorecase
 set smartcase
-autocmd BufNewFile,BufRead *.yml setlocal ft=yaml
-autocmd BufNewFile,BufRead *.yaml setlocal ft=yaml
+autocmd BufNewFile,BufRead *.yml,*.yaml set filetype=yaml
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.py,.xonshrc set filetype=python
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
-"set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+"sut fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 " https://www.fullstackpython.com/vim.html
 syntax enable
 set autoindent
@@ -71,6 +71,8 @@ call dein#add('leafgarland/typescript-vim')
 call dein#add('mechatroner/rainbow_csv')
 call dein#add('chrisbra/Colorizer')
 call dein#add('tpope/vim-fugitive')
+call dein#add('easymotion/vim-easymotion')
+call dein#add('justinmk/vim-sneak')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
@@ -88,7 +90,6 @@ endif
 
 "http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
-nnoremap <Leader>w :w<CR>
 nnoremap <Leader>h :noh<CR>
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
@@ -104,6 +105,5 @@ nnoremap <Leader>op :call PecoOpen()<CR>
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd FileType vue syntax sync fromstart
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-nnoremap <leader>r :NERDTreeFind<cr>
 nnoremap <leader>n :tabn<cr>
 autocmd BufEnter * lcd %:p:h
