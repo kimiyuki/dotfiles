@@ -1,3 +1,5 @@
+unset module
+unset scl
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -211,5 +213,3 @@ eval "$(direnv hook bash)"
 
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
-#unset module
-#unset scl
