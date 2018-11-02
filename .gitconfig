@@ -1,6 +1,6 @@
 [user]
 	email = kimiyuki@gmail.com
-	name = kimiyuki shirai
+	name = kimi
 
 [alias]
   st = status
@@ -8,8 +8,11 @@
   l  = log --decorate --oneline
   ls = log --decorate --oneline --stat
   ll  = ls-tree -r master
-  files = !cd ${GIT_PREFIX:-.} && git ls-tree -z --name-only HEAD|xargs -0 -n1 -I@ -- git log -1 --pretty=format:'%C(green)%ai%Creset %C(yellow)%h%Creset @ %C(blue)(%ar)%Creset %C(red)<%an>%Creset' -- @
-  g = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  files = !cd ${GIT_PREFIX:-.} && git ls-tree -z --name-only HEAD|\
+    xargs -0 -n1 -I@ -- git log -1 \
+    --pretty=format:'%C(green)%ai%Creset %C(yellow)%h%Creset @ %C(blue)(%ar)%Creset %C(red)<%an>%Creset' -- @
+  g = log --graph --date=format:'%m/%d %H:%M' --decorate=short \
+          --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cN %Cred%d %Creset%s'
 
 [push]
   default = simple
