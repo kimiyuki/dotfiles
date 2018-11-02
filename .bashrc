@@ -14,6 +14,7 @@ function post_command {
   history -c
   history -r
   last_command=`history 1| cut -c 8-|sed -e "s/^/'/;s/$/'/"`
+  jobsname=$(jobs -l|sed -E 's/.* +//g')
   #$HOME/bin/bq-insert-cmd.sh $PWD "$last_command" 1>/dev/null &
 }
 PROMPT_COMMAND='post_command'
@@ -29,7 +30,7 @@ export HISTFILESIZE=2000000
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
+\
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 export LESS='-i -M -R'
@@ -64,11 +65,11 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-
+##https://unix.stackexchange.com/questions/35728/is-it-possible-to-customise-the-prompt-to-show-the-if-there-are-any-background-j : show (background) jobs name
 if [ "$color_prompt" = yes ]; then
-  PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w(\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[\033[00m\]\$ "
+  PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w(\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[\033[00m\]\j:\$jobsname\$ "
 else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\\j$ '
 fi
 unset color_prompt force_color_prompt
 
