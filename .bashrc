@@ -212,5 +212,6 @@ fi
 
 eval "$(direnv hook bash)"
 
+. ~/bin/z.sh
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
