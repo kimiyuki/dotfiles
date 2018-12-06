@@ -105,6 +105,7 @@ alias l='ls -CF'
 alias rm='rm -i'
 alias locate='locate -b'
 alias dirs='dirs -v'
+alias 'dp=docker ps --format "table {{.Names}}\t{{.Ports}}\t{{.Status}}\t{{.Command}}"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -215,3 +216,6 @@ eval "$(direnv hook bash)"
 . ~/bin/z.sh
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
+export PYTHONPATH=/usr/lib/python3.7/site-packages
+export PATH=$PATH:/opt/apache-maven-3.5.4/bin
+export PIPENV_VENV_IN_PROJECT=1
