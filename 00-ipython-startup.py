@@ -43,16 +43,20 @@ def show_more(df, n=10000):
     #return df; if i can preventn to output to console, comment-out it
     #get_ipython().run_line_magic('page') 
 
+from vega_datasets import data
+iris = data('iris')
+cars = data('cars')
+movies = data('movies')
+sp500 = data('sp500')
+stock = data('stocks')
+
 import seaborn as sns
-sns.set(style='darkgrid', font='TakaoGothic')
-iris = sns.load_dataset("iris")
-mpg = sns.load_dataset("mpg")
+#sns.set(style='darkgrid', font='TakaoGothic')
 flights = sns.load_dataset("flights")
 diamonds = sns.load_dataset("diamonds")
 titanic = sns.load_dataset("titanic")
 planets = sns.load_dataset("planets")
-births = pd.read_csv("~/dotfiles/births.csv") #for timeseries data practice
-print('plt, np, pd, sns are loaded')
+print('plt, np, pd, sns, altair are loaded')
 import requests
 from bs4 import BeautifulSoup
 

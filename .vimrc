@@ -91,7 +91,8 @@ endif
 "http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 nnoremap <Leader>h :noh<CR>
-nnoremap <silent> [b :bprevious<CR>
+"nnoremap <silent> [b :bprevious<CR>
+nnoremap [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> ]B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
@@ -107,3 +108,6 @@ autocmd FileType vue syntax sync fromstart
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <leader>n :tabn<cr>
 autocmd BufEnter * lcd %:p:h
+map  <Leader>w <Plug>(easymotion-w)
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)

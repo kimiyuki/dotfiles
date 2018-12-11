@@ -166,7 +166,7 @@ gcfg(){
 set -o ignoreeof
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu
 
 export LESS='-i -M -R'
 if [ `hostname` == 'wordpress' ]; then
