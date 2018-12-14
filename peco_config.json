@@ -1,0 +1,13 @@
+{
+    "CustomFilter": {
+        "grepV": {
+            "Cmd" : "grepv.pl",
+            "Args" : [ "$QUERY" ],
+            "BufferThreshold" : 100
+        },
+        "Migemo" : {
+            "Cmd" : "migemogrep",
+            "BufferThreshold" : 20
+        }
+    }
+}

@@ -106,6 +106,9 @@ alias rm='rm -i'
 alias locate='locate -b'
 alias dirs='dirs -v'
 alias 'dp=docker ps --format "table {{.Names}}\t{{.Ports}}\t{{.Status}}\t{{.Command}}"'
+alias lll='find ./ -type f -not -path ".\/.git*" -printf "%T@ %p\n" -ls | sort -n | cut -d" " -f 2- | xargs -r ls -la|peco'
+alias fn='cd "$(find . -type d|grep -v "\/\."|peco)"'
+alias ff='find . -type f -not -path ".\/.*"|peco'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -152,7 +155,13 @@ export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 peco-select-history() {
-    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+    local l=$(\history |\
+               sort -r -k 2|\
+               uniq -1 |\
+               sort -nr -k 1|\
+               awk '{$1="";print}' |\
+               cut -d' ' -f 2- |\
+               peco)
     READLINE_LINE="$l"
     READLINE_POINT=${#l}
 }
@@ -166,7 +175,7 @@ gcfg(){
 set -o ignoreeof
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu
+export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/libreoffice/program
 
 export LESS='-i -M -R'
 if [ `hostname` == 'wordpress' ]; then
@@ -219,3 +228,4 @@ eval "$(direnv hook bash)"
 export PYTHONPATH=/usr/lib/python3.7/site-packages
 export PATH=$PATH:/opt/apache-maven-3.5.4/bin
 export PIPENV_VENV_IN_PROJECT=1
+xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
