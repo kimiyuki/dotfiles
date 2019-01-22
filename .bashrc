@@ -136,6 +136,7 @@ fi
 
 # added by Miniconda3 4.3.21 installer
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$HOME/google_appengine/"
 export PATH="$PATH:$HOME/src/go_appengine/"
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
@@ -229,3 +230,5 @@ export PYTHONPATH=/usr/lib/python3.7/site-packages
 export PATH=$PATH:/opt/apache-maven-3.5.4/bin
 export PIPENV_VENV_IN_PROJECT=1
 xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json

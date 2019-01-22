@@ -12,6 +12,7 @@ set modeline
 set hlsearch
 set belloff=all
 set tags=./tags;/
+set foldmethod=indent
 hi Search ctermbg=LightCyan
 "hi Search ctermfg=Red
 set ignorecase

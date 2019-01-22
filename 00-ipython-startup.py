@@ -1,7 +1,7 @@
 try:
     get_ipython().run_line_magic('load_ext', 'autoreload')
     get_ipython().run_line_magic('autoreload', '2')
-    get_ipython().run_line_magic('load_ext', 'memory_profiler')
+    #get_ipython().run_line_magic('load_ext', 'memory_profiler')
     get_ipython().run_line_magic('xmode', 'Plain')
     print('autoreload loaded from startup ~/.ipython/...')
 except NameError:
