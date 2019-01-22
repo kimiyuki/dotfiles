@@ -13,6 +13,7 @@ set hlsearch
 set belloff=all
 set tags=./tags;/
 set foldmethod=indent
+au BufRead * normal zR
 hi Search ctermbg=LightCyan
 "hi Search ctermfg=Red
 set ignorecase
