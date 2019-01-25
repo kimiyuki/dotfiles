@@ -176,7 +176,7 @@ gcfg(){
 set -o ignoreeof
 
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/libreoffice/program
+#export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/libreoffice/program
 
 export LESS='-i -M -R'
 if [ `hostname` == 'wordpress' ]; then
@@ -229,6 +229,15 @@ eval "$(direnv hook bash)"
 export PYTHONPATH=/usr/lib/python3.7/site-packages
 export PATH=$PATH:/opt/apache-maven-3.5.4/bin
 export PIPENV_VENV_IN_PROJECT=1
-xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
-export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
+#xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+if [ $HOSTNAME = "ub2" ]; then
+  export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+fi
+#export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
+# XDG Base Directory Specification Environment Variables
+# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html.
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_DIRS=/usr/local/share
+export XDG_CONFIG_DIRS=/usr/local/etc/xdg
+export XDG_CACHE_HOME=$HOME/.cache
