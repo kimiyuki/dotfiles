@@ -19,8 +19,9 @@ function post_command {
 }
 PROMPT_COMMAND='post_command'
 shopt -s histappend
-export HISTSIZE=1000000
-export HISTFILESIZE=2000000
+export HISTSIZE=10000000
+export HISTFILESIZE=20000000
+export HISTTIMEFORMAT="%Y-%m-%d %T "
 #export PROMPT_COMMAND="history -a"
 
 # check the window size after each command and, if necessary,
@@ -162,8 +163,9 @@ peco-select-history() {
                sort -nr -k 1|\
                awk '{$1="";print}' |\
                cut -d' ' -f 2- |\
-               peco)
-    READLINE_LINE="$l"
+	       peco)
+    local ll=$(echo $l|cut -d' ' -f3-) 
+    READLINE_LINE=${ll}
     READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco-select-history'
@@ -232,6 +234,12 @@ export PIPENV_VENV_IN_PROJECT=1
 #xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 if [ $HOSTNAME = "ub2" ]; then
   export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/home/shirai/src/google-cloud-sdk/path.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/path.bash.inc'; fi
+  # The next line enables shell command completion for gcloud.
+  if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/completion.bash.inc'; fi
+  sleep 2 && xmodmap $HOME/.Xmodmap
+  xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 fi
 #export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
 # XDG Base Directory Specification Environment Variables
@@ -241,3 +249,5 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_DIRS=/usr/local/share
 export XDG_CONFIG_DIRS=/usr/local/etc/xdg
 export XDG_CACHE_HOME=$HOME/.cache
+#export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
+
