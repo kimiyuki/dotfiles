@@ -110,6 +110,7 @@ alias 'dp=docker ps --format "table {{.Names}}\t{{.Ports}}\t{{.Status}}\t{{.Comm
 alias lll='find ./ -type f -not -path ".\/.git*" -printf "%T@ %p\n" -ls | sort -n | cut -d" " -f 2- | xargs -r ls -la|peco'
 alias fn='cd "$(find . -type d|grep -v "\/\."|peco)"'
 alias ff='find . -type f -not -path ".\/.*"|peco'
+alias stl='sudo systemctl --type service'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -226,18 +227,38 @@ fi
 eval "$(direnv hook bash)"
 
 . ~/bin/z.sh
+function make-completion-wrapper () {
+  local function_name="$2"
+  local arg_count=$(($#-3))
+  local comp_function_name="$1"
+  shift 2
+  local function="
+    function $function_name {
+      ((COMP_CWORD+=$arg_count))
+      COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
+      "$comp_function_name"
+      return 0
+    }"
+  eval "$function"
+  echo $function_name
+  echo "$function"
+}
+
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
 export PYTHONPATH=/usr/lib/python3.7/site-packages
-export PATH=$PATH:/opt/apache-maven-3.5.4/bin
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH:/opt/apache-maven-3.5.4/bin"
 export PIPENV_VENV_IN_PROJECT=1
 xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
-export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
-sleep 2 && xmodmap $HOME/.Xmodmap
+#export GOOGLE_APPLICATION_CREDENTIALS=$HOME/:
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/shirai/src/google-cloud-sdk/path.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/completion.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
