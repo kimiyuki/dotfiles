@@ -9,5 +9,10 @@
             "Cmd" : "migemogrep",
             "BufferThreshold" : 20
         }
+    },
+    "Keymap": {
+        "C-u": "peco.ScrollPageUp",
+        "C-d": "peco.ScrollPageDown",
+        "C-x,C-c": "peco.Cancel"
     }
 }
