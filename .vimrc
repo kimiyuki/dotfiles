@@ -5,7 +5,8 @@
 set scrolloff=0
 set laststatus=2
 "set statusline=%!getcwd()
-set statusline=%{fugitive#statusline()}:%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+"set statusline=%{fugitive#statusline()}:%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set statusline=%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set ambiwidth=double
 "set cmdheight=2
 set modeline
