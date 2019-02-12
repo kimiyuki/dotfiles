@@ -19,8 +19,9 @@ function post_command {
 }
 PROMPT_COMMAND='post_command'
 shopt -s histappend
-export HISTSIZE=1000000
-export HISTFILESIZE=2000000
+export HISTSIZE=10000000
+export HISTFILESIZE=20000000
+export HISTTIMEFORMAT="%Y-%m-%d %T "
 #export PROMPT_COMMAND="history -a"
 
 # check the window size after each command and, if necessary,
@@ -162,8 +163,9 @@ peco-select-history() {
                sort -nr -k 1|\
                awk '{$1="";print}' |\
                cut -d' ' -f 2- |\
-               peco)
-    READLINE_LINE="$l"
+	       peco)
+    local ll=$(echo $l|cut -d' ' -f3-) 
+    READLINE_LINE=${ll}
     READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco-select-history'
@@ -221,14 +223,35 @@ if [ $LOGNAME == 'chronos' ]; then
   if [ -f '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc'; fi
 fi
 
-#eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"
 
-#. ~/bin/z.sh
+. ~/bin/z.sh
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
-#export PYTHONPATH=/usr/lib/python3.7/site-packages
-#export PATH=$PATH:/opt/apache-maven-3.5.4/bin
-#export PIPENV_VENV_IN_PROJECT=1
 #xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 #export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
-#export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
+=======
+export PYTHONPATH=/usr/lib/python3.7/site-packages
+export PATH=$PATH:/opt/apache-maven-3.5.4/bin
+export PIPENV_VENV_IN_PROJECT=1
+if [ $HOSTNAME == 'ub2' ];then
+  echo 'trackbacll setting'
+  xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+fi
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+sleep 2 && xmodmap $HOME/.Xmodmap
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/shirai/src/google-cloud-sdk/path.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/completion.bash.inc'; fi
+
+
+##npm
+# https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
