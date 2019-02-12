@@ -221,14 +221,14 @@ if [ $LOGNAME == 'chronos' ]; then
   if [ -f '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc'; fi
 fi
 
-eval "$(direnv hook bash)"
+#eval "$(direnv hook bash)"
 
-. ~/bin/z.sh
+#. ~/bin/z.sh
 # added by Anaconda3 installer
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
-export PYTHONPATH=/usr/lib/python3.7/site-packages
-export PATH=$PATH:/opt/apache-maven-3.5.4/bin
-export PIPENV_VENV_IN_PROJECT=1
-xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
-export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
+#export PYTHONPATH=/usr/lib/python3.7/site-packages
+#export PATH=$PATH:/opt/apache-maven-3.5.4/bin
+#export PIPENV_VENV_IN_PROJECT=1
+#xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+#export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+#export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
