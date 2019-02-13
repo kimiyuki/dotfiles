@@ -177,8 +177,7 @@ gcfg(){
 
 set -o ignoreeof
 
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/libreoffice/program
+#export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/libreoffice/program
 
 export LESS='-i -M -R'
 if [ `hostname` == 'wordpress' ]; then
@@ -238,7 +237,7 @@ if [ $HOSTNAME == 'ub2' ];then
   echo 'trackbacll setting'
   xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 fi
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
+#export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
 sleep 2 && xmodmap $HOME/.Xmodmap
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -251,7 +250,12 @@ if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home
 ##npm
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
+if [ ! -L ${my_link} ]; then
+  ln -s $HOME/dotfiles/.npmrc $HOME/.npmrc
+fi
+export NODE_PATH=`npm root -g`
 export PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
