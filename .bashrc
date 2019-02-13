@@ -230,7 +230,6 @@ eval "$(direnv hook bash)"
 #export PATH="/home/shirai/anaconda3/bin:$PATH"
 #xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
 #export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
-=======
 export PYTHONPATH=/usr/lib/python3.7/site-packages
 export PATH=$PATH:/opt/apache-maven-3.5.4/bin
 export PIPENV_VENV_IN_PROJECT=1
@@ -252,6 +251,16 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
+##symlinks for dotfiles
+ln -fs $HOME/dotfiles/fix_some.sh $HOME/bin/fix_some.sh
+ln -fs ~/dotfiles/.npmrc  $HOME/.npmrc
+ln -fs ~/dotfiles/.vimrc  $HOME/.vimrc
+ln -fs ~/dotfiles/.tmux.conf  $HOME/.tmux.conf
+ln -fs ~/dotfiles/.gitconfig  $HOME/.gitconfig
+ln -fs ~/dotfiles/.Xmodmap  $HOME/.Xmodmap
+ln -fs ~/dotfiles_secret/vscode_user_settings.json  $HOME/.config/Code/User/settings.json
+
+
 ##fix trackball
 if [ $HOSTNAME == 'ub2' ];then
   echo 'trackbacll setting'
@@ -261,3 +270,5 @@ fi
 if [ $HOSTNAME == 'mb2' ];then
   $HOME/bin/fix_some.sh
 fi
+
+
