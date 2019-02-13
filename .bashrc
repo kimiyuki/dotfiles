@@ -231,10 +231,6 @@ eval "$(direnv hook bash)"
 export PYTHONPATH=/usr/lib/python3.7/site-packages
 export PATH=$PATH:/opt/apache-maven-3.5.4/bin
 export PIPENV_VENV_IN_PROJECT=1
-if [ $HOSTNAME == 'ub2' ];then
-  echo 'trackbacll setting'
-  xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
-fi
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so:$LD_PRELOAD
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gconf/abca-a1e9297fe7b8.json
 sleep 2 && xmodmap $HOME/.Xmodmap
@@ -249,9 +245,17 @@ if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home
 ##npm
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
-
 export PATH="$NPM_PACKAGES/bin:$PATH"
-
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+##fix trackball
+if [ $HOSTNAME == 'ub2' ];then
+  echo 'trackbacll setting'
+  xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+fi
+##fix touchpad
+if [ $HOSTNAME == 'mb2' ];then
+  $HOME/bin/fix_some.sh
+fi
