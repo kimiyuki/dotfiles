@@ -13,3 +13,4 @@ cd dotfiles
 #TODO 
 プラグイン対応とか
 個別修正をどう組み入れるかなど？
+vscodeは、keybindings.jsonのみ、settings.jsonはprivateに。
