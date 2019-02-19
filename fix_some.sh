@@ -1,5 +1,6 @@
-sudo rmmod i2c_hid
-sudo modprobe i2c_hid
+echo 'how can I fix this problem????'
+#sudo rmmod i2c_hid
+#sudo modprobe i2c_hid
 echo "$HOSTNAME"
 # use "_" by シェルスクリプトシンプルレシピ
 if [ "_$HOSTNAME" = "_mb2" ]; then
