@@ -238,12 +238,6 @@ fi
 
 sleep 2 && xmodmap $HOME/.Xmodmap
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/shirai/src/google-cloud-sdk/path.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/shirai/src/google-cloud-sdk/completion.bash.inc' ]; then . '/home/shirai/src/google-cloud-sdk/completion.bash.inc'; fi
-
 
 ##npm
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
@@ -275,4 +269,11 @@ fi
 ##fix touchpad
 if [ $HOSTNAME == 'mb2' ];then
   $HOME/bin/fix_some.sh
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/home/shirai/Downloads/google-cloud-sdk/path.bash.inc' ]; then
+    . '/home/shirai/Downloads/google-cloud-sdk/path.bash.inc'; fi
+  # The next line enables shell command completion for gcloud.
+  if [ -f '/home/shirai/Downloads/google-cloud-sdk/completion.bash.inc' ]; then 
+    . '/home/shirai/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 fi
+
