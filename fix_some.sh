@@ -6,7 +6,7 @@ echo "$HOSTNAME"
 if [ "_$HOSTNAME" = "_mb2" ]; then
   echo 'start'
   echo "does not work properly, why?"
-  syndaemon -i 0.3 -R -d
+  #syndaemon -i 0.3 -R -d
   synclient AreaLeftEdge=100 AreaRightEdge=1200
   synclient AreaTopEdge=50 AreaBottomEdge=800
   result=$(synclient -l|grep area.*edge)
