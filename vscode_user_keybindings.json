@@ -105,11 +105,15 @@
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "f10",
+        "key": "f1",
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
         "key": "ctrl+b",
         "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
     }
 ]
