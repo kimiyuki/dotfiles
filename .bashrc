@@ -147,10 +147,6 @@ export PATH="$PATH:$HOME/.local/bin"
 set -o ignoreeof
 
 
-#GCLOUD# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
-
-
 ##GO and peco 
 #https://teratail.com/questions/41746
 export GOPATH="$HOME/go"
@@ -269,11 +265,10 @@ fi
 ##fix touchpad
 if [ $HOSTNAME == 'mb2' ];then
   $HOME/bin/fix_some.sh
-  # The next line updates PATH for the Google Cloud SDK.
-  if [ -f '/home/shirai/Downloads/google-cloud-sdk/path.bash.inc' ]; then
-    . '/home/shirai/Downloads/google-cloud-sdk/path.bash.inc'; fi
-  # The next line enables shell command completion for gcloud.
-  if [ -f '/home/shirai/Downloads/google-cloud-sdk/completion.bash.inc' ]; then 
-    . '/home/shirai/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
