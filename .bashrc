@@ -272,3 +272,6 @@ if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-clou
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
+
+export C_INCLUDE_PATH=/usr/include/python3.6m/
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
