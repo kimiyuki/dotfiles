@@ -1,5 +1,5 @@
 {
-  "memo": "linked from ~/.config/peco/config.json",
+    "memo": "linked from ~/.config/peco/config.json",
     "CustomFilter": {
         "grepV": {
             "Cmd" : "grepv.pl",
