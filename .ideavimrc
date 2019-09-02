@@ -1,2 +1,25 @@
 set visualbell
 set noerrorbells
+set ignorecase
+set smartcase
+set incsearch
+set clipboard=unnamed
+set showmode
+set undolevels=10000
+nnoremap 0 ^
+let mapleader = "\<Space>"
+
+nnoremap gf :action FileStructurePopup<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap gu :action ShowUsage<CR>
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+
+nnoremap ~ <Nop>
+
+
