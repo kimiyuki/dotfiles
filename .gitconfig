@@ -3,9 +3,10 @@
 	name = kimiyuki shirai
 
 [alias]
-  st = status
-  cm = commit
-  l  = log --decorate --oneline
+  s = status
+  c = commit
+  b = branch -a
+  l = "!git --no-pager log --decorate --oneline"
   ls = log --decorate --oneline --stat
   ll  = ls-tree -r master
   files = !cd ${GIT_PREFIX:-.} && git ls-tree -z --name-only HEAD|\
@@ -25,3 +26,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[core]
+	autocrlf = input
