@@ -1,7 +1,1 @@
-#https://qiita.com/YasuOza/items/7be136f03867d20b8332
-set diff-options = -m --first-parent
-#https://qiita.com/yoshikazusawa/items/d99e8b5d6f6a45aa6e2es
-set main-view = id:width=5 date author commit-title:graph=yes,refs=yes
-#https://qiita.com/sfus/items/063797a1dd8fdc7d032f
-color  diff-header       default magenta
-color  diff-chunk        black   white
+set main-view = id date author commit-title:graph=yes,refs=yes
