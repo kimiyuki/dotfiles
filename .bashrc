@@ -100,6 +100,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alrthF'
+alias s='git status --short --branch'
 alias lh='tree -d -L 1'
 alias la='ls -A'
 alias l='ls -CF'
@@ -290,3 +291,6 @@ man(){
   LESS_TERMCAP_us=$'\E[04;38;5;146m' \
   man "$@"
 }
+
+export NVM_DIR="/home/shirai/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
