@@ -1,4 +1,5 @@
-// Place your key bindings in this file to override the defaultsauto[]
+//symlinkだと、vscodeの設定反映に再起動が必要になるため、もう使わない
+//extensionsのsettings sync で gistに設定を保存することにする
 [
     {
         "key": "ctrl+enter",
@@ -145,5 +146,100 @@
         "key": "ctrl+shift+f5",
         "command": "-workbench.action.debug.restart",
         "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-editor.action.blockComment",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+a",
+        "command": "extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "-extension.currentAREPLSession",
+        "when": "!inQuickOpen && !terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo"
+    },
+    {
+        "key": "ctrl+shift+k ctrl+shift+r",
+        "command": "workbench.action.keybindingsReference"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-workbench.action.keybindingsReference"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "default:redo"
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "workbench.action.openNextRecentlyUsedEditor"
     }
 ]
