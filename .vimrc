@@ -1,6 +1,9 @@
 "unlet! skip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 
+source $VIMRUNTIME/defaults.vim
+"source $VIMRUNTIME/ftplugin/man.vim
+
 :color desert
 set scrolloff=0
 set laststatus=2
@@ -76,6 +79,7 @@ call dein#add('chrisbra/Colorizer')
 call dein#add('tpope/vim-fugitive')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('justinmk/vim-sneak')
+call dein#add('jez/vim-superman')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
@@ -99,13 +103,10 @@ nnoremap [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> ]B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+"https://vim.fandom.com/wiki/Move_to_next/previous_line_with_same_indentation
+nnoremap <leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
+nnoremap <leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
 
-function! PecoOpen()
-    for filename in split(system("find . -type f | peco"), "\n")
-        execute "e" filename
-    endfor
-endfunction
-nnoremap <Leader>op :call PecoOpen()<CR>
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd FileType vue syntax sync fromstart
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
@@ -113,4 +114,4 @@ nnoremap <leader>n :tabn<cr>
 autocmd BufEnter * lcd %:p:h
 map  <Leader>w <Plug>(easymotion-w)
 map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+"nmap <Leader>f <Plug>(easymotion-overwin-f)
