@@ -1,9 +1,10 @@
 set main-options = --exclude=refs/stash --all
-set main-view = line-number:yes id date author commit-title:graph=yes,refs=yes
+set main-view = line-number:yes id date:relative-compact author:no commit-title:graph=v2,refs=yes
 
 bind main C !git commit
-bind generic F  ?git fetch %(remote)
 bind main    F  ?git fetch %(remote)
+bind generic F  ?git fetch %(remote)
+bind refs C ?git checkout %(branch)
 
 # blame view の行数表示をON、intervalを1に
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
