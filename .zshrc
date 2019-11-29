@@ -118,8 +118,8 @@ ln -fs ~/dotfiles/.Xmodmap  $HOME/.Xmodmap
 if [ "$HOSTNAME" = 'ub2' ];then
   echo 'trackbacll setting'
   xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
+  sleep 2 && xmodmap $HOME/.Xmodmap
 fi
-sleep 2 && xmodmap $HOME/.Xmodmap
 
 
 #gcfg(){
@@ -171,6 +171,5 @@ setopt prompt_subst
 PROMPT_COMMAND='hasjobs=$(jobs -p)'
 PS1='${hasjobs:+\j }\$ '
 RPROMPT='`rprompt-git-current-branch`'
-sleep 1 && xmodmap $HOME/.Xmodmap
 
-ln -s $HOME/dotfiles/.ripgreprc $HOME/.ripgreprc
+ln -fs $HOME/dotfiles/.ripgreprc $HOME/.ripgreprc
