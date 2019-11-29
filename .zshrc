@@ -53,11 +53,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 ## PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$PATH:$HOME/google_appengine/"
-export PATH="$PATH:$HOME/src/go_appengine/"
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
-export PATH="$PATH:$HOME/.local/bin"
 
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
