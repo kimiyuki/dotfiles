@@ -51,8 +51,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 ## PATH
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/snap/bin:$PATH"
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
 export GOPATH="$HOME/go"
