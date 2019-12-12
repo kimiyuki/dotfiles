@@ -1,0 +1,31 @@
+set visualbell
+set noerrorbells
+set ignorecase
+set smartcase
+set incsearch
+set clipboard=unnamed
+set showmode
+set undolevels=10000
+nnoremap 0 ^
+let mapleader = "\<Space>"
+"https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+"actin list
+nnoremap gf :action FileStructurePopup<CR>
+nnoremap gF :action ShowFilePath<CR>
+nnoremap g; :action ExpressionTypeInfo<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap gn :action JumpToNextChange<CR>
+nnoremap gu :action ShowUsages<CR>
+"nnoremap <C-b> :action ActivateDesignerToolWindow<CR>
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+nnoremap ga :action ShowIntentionActions<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+
+nnoremap ~ <Nop>
+
+
