@@ -41,6 +41,8 @@ set showmatch
 set number
 set ruler
 set clipboard=unnamedplus
+set whichwrap=h,l,<,>,[,]
+set relativenumber
 
 " dein.vim
 if &compatible 
@@ -80,6 +82,7 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('justinmk/vim-sneak')
 call dein#add('jez/vim-superman')
+call dein#add('andymass/vim-matchup')
 "call dein#add('davidhalter/jedi-vim')
 call dein#end()
 filetype plugin indent on 
@@ -111,6 +114,7 @@ autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 autocmd FileType vue syntax sync fromstart
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <leader>n :tabn<cr>
+nmap 0 ^
 autocmd BufEnter * lcd %:p:h
 map  <Leader>w <Plug>(easymotion-w)
 map  <Leader>f <Plug>(easymotion-bd-f)
