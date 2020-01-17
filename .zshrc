@@ -79,7 +79,7 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 ##aliases
 alias ll='ls -alrthF'
-alias llm='find . -ctime -1 -ls'
+alias llm='find . -ctime -1 -ls ! -path "*/\.*"'
 alias s='git status --short --branch'
 alias lh='tree -d -L 1'
 alias la='ls -A'
