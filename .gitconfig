@@ -28,3 +28,4 @@
 	required = true
 [core]
 	autocrlf = input
+	editor = vim -c \"set fenc=utf-8\"
