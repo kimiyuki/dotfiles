@@ -1,5 +1,7 @@
 # User configuration
 # Set up the prompt
+export LC_MESSAGE="en_US.UTF-8"
+
 autoload -Uz promptinit
 promptinit
 prompt adam1
@@ -49,7 +51,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
 ## PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -79,6 +80,7 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 ##aliases
 alias ll='ls -alrthF'
+alias llm='find . -ctime -1 -ls'
 alias s='git status --short --branch'
 alias lh='tree -d -L 1'
 alias la='ls -A'
