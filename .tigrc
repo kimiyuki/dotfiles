@@ -1,3 +1,11 @@
+set main-view   = date id author:email-user commit-title:graph=yes,refs=yes
+set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set pager-view  = line-number:yes,interval=1 text
+set stage-view  = line-number:yes,interval=1 text
+set log-view    = line-number:yes,interval=1 text
+set blob-view   = line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
 set main-options = --exclude=refs/stash --all
 set main-view = line-number:yes id date:relative-compact author:no commit-title:graph=v2,refs=yes
 
