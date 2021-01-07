@@ -1,0 +1,70 @@
+{
+    "sshfs.configs": [
+       {
+            "label": "rspby1",
+            "root": "/home/pi/dev/raspi",
+            "host": "192.168.0.107",
+            "port": 22,
+            "username": "pi",
+            "passphrase": false,
+            "privateKeyPath": "/home/shirai/.ssh/id_rsa",
+            "name": "rp1"
+        }
+    ],
+    "window.zoomLevel": 0,
+    "editor.fontSize": 20,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.fontFamily": "monospace",
+    "python.jediEnabled": false,
+    "extensions.autoUpdate": false,
+    "window.menuBarVisibility": "toggle",
+    "python.linting.pylintEnabled": true,
+    "editor.tabSize": 2,
+    "python.pythonPath": "/usr/bin/python3",
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.cmdLineInitialColon": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.useCtrlKeys": false,
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": [ "u" ], "after": [], "commands": [ { "command": "undo" } ] },
+        { "before": [ "<C-r>" ], "after": [], "commands": [ { "command": "redo" } ] },
+        {"before":["<leader>", "h"], "commands":[":nohl"]}
+    ],
+      //easy motion
+"vim.easymotionMarkerForegroundColorOneChar":"rgba(0,240,170,0.9)",//一文字目の色
+"vim.easymotionMarkerForegroundColorTwoChar":"rgba(0,240,170,0.9)",//二文字目の色
+"vim.easymotionMarkerBackgroundColor":"",//背景色
+"vim.easymotionMarkerWidthPerChar":19,//各文字に割り当てられている幅
+"vim.easymotionMarkerHeight":0,//マーカーの高さ
+"vim.easymotionMarkerFontFamily":"Cica",//フォント
+"vim.easymotionMarkerFontSize":"15.5",//フォントサイズ
+"vim.easymotionMarkerFontWeight":"normal",//フォントの太さ
+"vim.easymotionKeys":"asdfhjklwqeruioopghty;",//マーカーに使用される文字列
+  "vim.easymotionMarkerYOffset":0,
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.visible": true,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "files.enableTrash": false,
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "terminal.explorerKind": "external",
+    "keyboard.dispatch": "keyCode",
+    "jshint.options": {
+        "esversion": 6
+    },
+    "sync.gist": "0224abb37d0617a84db417dff3038d51",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}

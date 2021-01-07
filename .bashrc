@@ -198,28 +198,6 @@ export JAVA_HOME
 PATH=$PATH:$JAVA_HOME/bin
 export PATH
 
-if [ $LOGNAME == 'chronos' ]; then
-  export PAGER=/usr/local/bin/less
-  # XDG Base Directory Specification Environment Variables
-  # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html.
-  export XDG_DATA_HOME=$HOME/.local/share
-  export XDG_CONFIG_HOME=$HOME/.config
-  export XDG_DATA_DIRS=/usr/local/share
-  export XDG_CONFIG_DIRS=/usr/local/etc/xdg
-  export XDG_CACHE_HOME=$HOME/.cache
-  # nodebrew completion
-  if [ -f /usr/local/share/nodebrew/completions/bash/nodebrew-completion ]; then
-    source /usr/local/share/nodebrew/completions/bash/nodebrew-completion
-  fi
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-  # The next line updates PATH for the Google Cloud SDK.
-  if [ -f '/home/chronos/user/src/google-cloud-sdk/path.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/path.bash.inc'; fi
-
-  # The next line enables shell command completion for gcloud.
-  if [ -f '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc' ]; then source '/home/chronos/user/src/google-cloud-sdk/completion.bash.inc'; fi
-fi
-
-eval "$(direnv hook bash)"
 
 . ~/bin/z.sh
 # added by Anaconda3 installer
@@ -255,7 +233,6 @@ ln -fs ~/dotfiles/.vimrc  $HOME/.vimrc
 ln -fs ~/dotfiles/.tmux.conf  $HOME/.tmux.conf
 ln -fs ~/dotfiles/.gitconfig  $HOME/.gitconfig
 ln -fs ~/dotfiles/.Xmodmap  $HOME/.Xmodmap
-ln -fs ~/dotfiles_secret/vscode_user_settings.json  $HOME/.config/Code/User/settings.json
 
 
 ##fix trackball
@@ -281,16 +258,21 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 
-man(){
-  env LESS_TERMCAP_mb=$'\E[01;31m' \
-  LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-  LESS_TERMCAP_me=$'\E[0m' \
-  LESS_TERMCAP_se=$'\E[0m' \
-  LESS_TERMCAP_so=$'\E[38;5;246m' \
-  LESS_TERMCAP_ue=$'\E[0m' \
-  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-  man "$@"
-}
+#man(){
+#  env LESS_TERMCAP_mb=$'\E[01;31m' \
+#  LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+#  LESS_TERMCAP_me=$'\E[0m' \
+#  LESS_TERMCAP_se=$'\E[0m' \
+#  LESS_TERMCAP_so=$'\E[38;5;246m' \
+#  LESS_TERMCAP_ue=$'\E[0m' \
+#  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+#  man "$@"
+#}
+#export PAGER="most" 
+export PATH="$PATH:$HOME/.vim/dein/repos/github.com/jez/vim-superman/bin"
 
 export NVM_DIR="/home/shirai/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source ~/src/tldr-c-client/autocomplete/complete.bash
+
+[[ -s "/home/shirai/.gvm/scripts/gvm" ]] && source "/home/shirai/.gvm/scripts/gvm"
