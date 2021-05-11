@@ -1,6 +1,8 @@
 # User configuration
 # Set up the prompt
-export LC_MESSAGE="en_US.UTF-8"
+export LANG="ja_JP.UTF-8"
+export LANGUAGE="ja_JP.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
 
 autoload -Uz promptinit
 promptinit
@@ -102,7 +104,7 @@ if [ -f "$HOME/src/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/sr
 ##symlinks for dotfiles
 ln -fs $HOME/dotfiles/fix_some.sh $HOME/bin/fix_some.sh
 ln -fs ~/dotfiles/.npmrc  $HOME/.npmrc
-ln -fs ~/dotfiles/.vimrc  $HOME/.vimrc
+#ln -fs ~/dotfiles/.vimrc  $HOME/.vimrc
 ln -fs ~/dotfiles/.tmux.conf  $HOME/.tmux.conf
 ln -fs ~/dotfiles/.gitconfig  $HOME/.gitconfig
 ln -fs ~/dotfiles/.Xmodmap  $HOME/.Xmodmap
@@ -195,4 +197,11 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
-source  "$HOME/.gvm/scripts/gvm"
+#source  "$HOME/.gvm/scripts/gvm"
+
+#source /home/shirai/.config/broot/launcher/bash/br
+#eval "$(anyenv init - zsh)"
+source "$HOME/.profile"
+eval "$(nodenv init -)"
+
+export PATH="$HOME/.poetry/bin:$PATH"

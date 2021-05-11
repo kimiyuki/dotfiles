@@ -1,17 +1,8 @@
-"unlet! skip_defaults_vim
-"source $VIMRUNTIME/defaults.vim
-
-source $VIMRUNTIME/defaults.vim
-"source $VIMRUNTIME/ftplugin/man.vim
-
 :color desert
 set scrolloff=0
 set laststatus=2
-"set statusline=%!getcwd()
-"set statusline=%{fugitive#statusline()}:%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set statusline=%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set ambiwidth=double
-"set cmdheight=2
 set modeline
 set hlsearch
 set belloff=all
@@ -89,33 +80,38 @@ filetype plugin indent on
 
 " https://qiita.com/ymiyamae/items/06d0f5ce9c55e7369e1f
 " ファイルタイプに合わせたindent
-autocmd FileType python setlocal sw=2 sts=2 ts=2 et
+" autocmd FileType python setlocal sw=2 sts=2 ts=2 et
 
 if dein#check_install()
   call dein#install()
 endif
 
-"autocmd VimEnter * execute 'NERDTree'
-"https://github.com/jpalardy/vim-slime
 
 "http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 nnoremap <Leader>h :noh<CR>
-"nnoremap <silent> [b :bprevious<CR>
-nnoremap [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> ]B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-"https://vim.fandom.com/wiki/Move_to_next/previous_line_with_same_indentation
-nnoremap <leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
-nnoremap <leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
-
-autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
-autocmd FileType vue syntax sync fromstart
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-nnoremap <leader>n :tabn<cr>
 nmap 0 ^
-autocmd BufEnter * lcd %:p:h
-map  <Leader>w <Plug>(easymotion-w)
-map  <Leader>f <Plug>(easymotion-bd-f)
-"nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+if exists('g:vscode')
+  xmap <C-/> <Plug>VSCodeCommentarygv
+  nmap <C-/> <Plug>VSCodeCommentaryLine
+else
+  nnoremap [b :bprevious<CR>
+  nnoremap <silent> ]b :bnext<CR>
+  nnoremap <silent> ]B :bfirst<CR>
+  nnoremap <silent> ]B :blast<CR>
+  "https://vim.fandom.com/wiki/Move_to_next/previous_line_with_same_indentation
+  nnoremap <leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
+  nnoremap <leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
+
+  autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+  autocmd FileType vue syntax sync fromstart
+  "nnoremap <silent><C-e> :NERDTreeToggle<CR>
+  nnoremap <leader>n :tabn<cr>
+  autocmd BufEnter * lcd %:p:h
+  map  <Leader>w <Plug>(easymotion-w)
+  map  <Leader>f <Plug>(easymotion-bd-f)
+  "nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+endif
+

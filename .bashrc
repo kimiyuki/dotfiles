@@ -276,3 +276,5 @@ export NVM_DIR="/home/shirai/.nvm"
 source ~/src/tldr-c-client/autocomplete/complete.bash
 
 [[ -s "/home/shirai/.gvm/scripts/gvm" ]] && source "/home/shirai/.gvm/scripts/gvm"
+
+source /home/shirai/.config/broot/launcher/bash/br
