@@ -4,13 +4,13 @@ export LANG="ja_JP.UTF-8"
 export LANGUAGE="ja_JP.UTF-8"
 export LC_MESSAGES="en_US.UTF-8"
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+fpath+=~/.zfunc
+compinit
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
 ##HISTORY
+setopt ignore_eof
 setopt histignorealldups sharehistory
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -30,8 +30,8 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-
 # Use modern completion system
+
 #autoload -Uz compinit && compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -50,10 +50,10 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+
 ## PATH
 export PATH="$HOME/bin:$HOME/.local/bin:/snap/bin:$PATH"
-export PATH="$PATH:$HOME/src/google-cloud-sdk/bin"
-export CLOUDSDK_PYTHON=/usr/bin/python2.7
+export CLOUDSDK_PYTHON=/usr/bin/python
 
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -94,13 +94,6 @@ alias ff='find . -type f -not -path ".\/.*"|peco'
 alias h='fc -lnd'
 
 
-#GCP
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/src/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/src/google-cloud-sdk/path.zsh.inc"; fi
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/src/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/src/google-cloud-sdk/completion.zsh.inc"; fi
-
-
 ##symlinks for dotfiles
 ln -fs $HOME/dotfiles/fix_some.sh $HOME/bin/fix_some.sh
 ln -fs ~/dotfiles/.npmrc  $HOME/.npmrc
@@ -112,6 +105,7 @@ ln -fs ~/dotfiles/.Xmodmap  $HOME/.Xmodmap
 #extra
 . $HOME/bin/z.sh
 
+# ok, i do not need any more
 if [ "$HOSTNAME" = 'ub2' ];then
   echo 'trackbacll setting'
   xinput --set-prop "Logitech USB Trackball" "libinput Accel Speed" 0.9
@@ -119,14 +113,70 @@ if [ "$HOSTNAME" = 'ub2' ];then
 fi
 
 
-#gcfg(){
-#     configuration_name=$(gcloud config configurations list | peco | awk '{print $1}')
-#    gcloud config configurations activate "${configuration_name}"
+
+# etc
+ln -fs $HOME/dotfiles/.ripgreprc $HOME/.ripgreprc
+[ -f "/home/shirai/.shopify-app-cli/shopify.sh" ] && source "/home/shirai/.shopify-app-cli/shopify.sh"
+export RSTUDIO_CHROMIUM_ARGUMENTS="--disable-gpu";
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+#source  "$HOME/.gvm/scripts/gvm"
+
+#source /home/shirai/.config/broot/launcher/bash/br
+#eval "$(anyenv init - zsh)"
+source "$HOME/.profile"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/shirai/src/google-cloud-sdk/path.zsh.inc' ]; then . '/home/shirai/src/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/shirai/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/shirai/src/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# for ubuntu22.04, debian
+# https://github.com/pypa/virtualenv/issues/2350
+export DEB_PYTHON_INSTALL_LAYOUT='deb'
+
+##PROMPT
+#function virtualenv_info { 
+#    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 #}
-
-#gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
-
-
+#export VIRTUAL_ENV_DISABLE_PROMPT=1
 function rprompt-git-current-branch {
   local branch_name st branch_status
 
@@ -160,48 +210,10 @@ function rprompt-git-current-branch {
   echo "${branch_status}[$branch_name]"
 }
 
-##PROMPT
 autoload -Uz colors
 colors
 setopt prompt_subst
-#PROMPT='%{$fg[red]%}[%n@%j]%{$reset_color%}'
-PROMPT_COMMAND='hasjobs=$(jobs -p)'
-PS1='${hasjobs:+\j }\$ '
+PROMPT="${fg[cyan]}[%n@%m]${reset_color} %~ $ ${fg[green]}"
 RPROMPT='`rprompt-git-current-branch`'
-
-ln -fs $HOME/dotfiles/.ripgreprc $HOME/.ripgreprc
-
-[ -f "/home/shirai/.shopify-app-cli/shopify.sh" ] && source "/home/shirai/.shopify-app-cli/shopify.sh"
-
-export RSTUDIO_CHROMIUM_ARGUMENTS="--disable-gpu";
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-#source  "$HOME/.gvm/scripts/gvm"
-
-#source /home/shirai/.config/broot/launcher/bash/br
-#eval "$(anyenv init - zsh)"
-source "$HOME/.profile"
-eval "$(nodenv init -)"
-
-export PATH="$HOME/.poetry/bin:$PATH"
+# https://qiita.com/tay07212/items/9509aef6dc3bffa7dd0c
+PROMPT_COMMAND='hasjobs=$(jobs -p)'
