@@ -63,14 +63,13 @@ export JAVA_HOME
 PATH=$PATH:$JAVA_HOME/bin
 export PATH
 
-
 ##npm
 ## https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
 if [ ! -L ${my_link} ]; then
   ln -s $HOME/dotfiles/.npmrc $HOME/.npmrc
 fi
-export NODE_PATH=`npm root -g`
+#export NODE_PATH=`npm root -g`
 export PATH="$NPM_PACKAGES/bin:$PATH"
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
@@ -157,7 +156,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -212,8 +210,12 @@ function rprompt-git-current-branch {
 
 autoload -Uz colors
 colors
-setopt prompt_subst
-PROMPT="${fg[cyan]}[%n@%m]${reset_color} %~ $ ${fg[green]}"
-RPROMPT='`rprompt-git-current-branch`'
+PROMPT="${fg[cyan]}[%n@%m:]%~ ${reset_color}
+$ "
+setopt prompt_subst #prompt substitution
+RPROMPT="$(rprompt-git-current-branch)"
+
 # https://qiita.com/tay07212/items/9509aef6dc3bffa7dd0c
-PROMPT_COMMAND='hasjobs=$(jobs -p)'
+#PROMPT_COMMAND='hasjobs=$(jobs -p)'
+
+export PATH="$HOME/.poetry/bin:$PATH"
